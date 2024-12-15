@@ -1,0 +1,19 @@
+{
+  "name": "PabloTheBlink - Radio en director",
+  "short_name": "PabloTheBlink radio",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone",
+  "orientation": "any",
+  "scope": "./",
+  "id": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "./assets/img/icon.jpeg",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

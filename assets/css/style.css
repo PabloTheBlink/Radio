@@ -46,13 +46,6 @@ html {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.radio .meta .now-playing {
-  font-size: 1rem;
-  font-weight: normal;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
 .radio .meta .title {
   margin-bottom: 1rem;
   font-size: 4rem;

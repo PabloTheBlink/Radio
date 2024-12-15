@@ -56,8 +56,6 @@ export const RadioController = {
               ${image ? `<img src="${image}" />` : ""}
               <div class="meta">
                 <div onclick="toggleAudio" class="player">${isPaused ? PlayIcon() : PauseIcon()}</div>
-
-                <p class="now-playing">Now playing</p>
                 <h1 class="title">${title || "Unknown Title"}</h1>
                 <p class="artist">${artist || "Unknown Artist"}</p>
               </div>
