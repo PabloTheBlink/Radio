@@ -3,9 +3,10 @@ import { PauseIcon, PlayIcon } from "../utils/icons.js";
 import { getMeta } from "../utils/getMeta.js";
 import { obtenerCaratulaDeezer } from "../utils/obtenerCaratulaDeezer.js";
 
-// #Todo
-// Si se pausa, y se reanuda mas tarde, hace buffering, y no corresponde a la metadata actual
-// Activar animacion solo si se esta reproduciendo
+// # Todo
+// - [x] Si se pausa, y se reanuda mas tarde, hace buffering, y no corresponde a la metadata actual
+// - [x] Activar animacion solo si se esta reproduciendo
+// - [ ] Recucir opacidad del pause al segundo
 
 export const RadioController = {
   postRender: function () {
@@ -16,7 +17,12 @@ export const RadioController = {
     this.audio = null;
 
     this.toggleAudio = function () {
+      if (!this.audio.src) this.audio.src = RADIO_URL;
       this.audio.paused ? this.audio.play() : this.audio.pause();
+      if (this.audio.paused) {
+        this.audio.src = "";
+        this.audio.currentTime = 0;
+      }
       this.apply();
     };
 
