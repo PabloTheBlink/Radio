@@ -3,6 +3,10 @@ import { PauseIcon, PlayIcon } from "../utils/icons.js";
 import { getMeta } from "../utils/getMeta.js";
 import { obtenerCaratulaDeezer } from "../utils/obtenerCaratulaDeezer.js";
 
+// #Todo
+// Si se pausa, y se reanuda mas tarde, hace buffering, y no corresponde a la metadata actual
+// Activar animacion solo si se esta reproduciendo
+
 export const RadioController = {
   postRender: function () {
     this.audio = document.querySelector("audio");
@@ -68,7 +72,7 @@ export const RadioController = {
     const isPaused = this.audio?.paused ?? true;
 
     return /* HTML */ `
-      <div class="radio">
+      <div class="radio ${!isPaused ? "playing" : ""}">
         ${this.meta
           ? /* HTML */ `
               ${image ? `<img src="${image}" />` : ""}

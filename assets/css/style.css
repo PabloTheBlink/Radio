@@ -25,6 +25,9 @@ html {
   width: 100dvw;
   height: 100dvh;
   object-fit: cover;
+}
+
+.radio.playing {
   animation: heartBeat 0.5s infinite;
 }
 
