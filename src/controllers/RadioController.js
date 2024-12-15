@@ -53,12 +53,10 @@ export const RadioController = {
             });
 
             navigator.mediaSession.setActionHandler("play", () => {
-              this.audio.play();
-              this.apply();
+              this.toggleAudio();
             });
             navigator.mediaSession.setActionHandler("pause", () => {
-              this.audio.pause();
-              this.apply();
+              this.toggleAudio();
             });
           }
         }
