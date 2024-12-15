@@ -3,11 +3,6 @@ import { PauseIcon, PlayIcon } from "../utils/icons.js";
 import { getMeta } from "../utils/getMeta.js";
 import { obtenerCaratulaDeezer } from "../utils/obtenerCaratulaDeezer.js";
 
-// # Todo
-// - [x] Si se pausa, y se reanuda mas tarde, hace buffering, y no corresponde a la metadata actual
-// - [x] Activar animacion solo si se esta reproduciendo
-// - [ ] Recucir opacidad del pause al segundo
-
 export const RadioController = {
   postRender: function () {
     this.audio = document.querySelector("audio");
@@ -16,12 +11,20 @@ export const RadioController = {
     this.meta = null;
     this.audio = null;
 
+    this.show_player = true;
+
     this.toggleAudio = function () {
+      this.show_player = true;
       if (!this.audio.src) this.audio.src = RADIO_URL;
       this.audio.paused ? this.audio.play() : this.audio.pause();
       if (this.audio.paused) {
         this.audio.src = "";
         this.audio.currentTime = 0;
+      } else {
+        setTimeout(() => {
+          this.show_player = false;
+          this.apply();
+        }, 1000 * 5);
       }
       this.apply();
     };
@@ -83,7 +86,7 @@ export const RadioController = {
           ? /* HTML */ `
               ${image ? `<img src="${image}" />` : ""}
               <div class="meta">
-                <div onclick="toggleAudio" class="player">${isPaused ? PlayIcon() : PauseIcon()}</div>
+                <div onclick="toggleAudio" class="player" ${!this.show_player ? /* HTML */ `style="opacity: 0.25"` : ``}>${isPaused ? PlayIcon() : PauseIcon()}</div>
                 <h1 class="title">${title || "Unknown Title"}</h1>
                 <p class="artist">${artist || "Unknown Artist"}</p>
               </div>
