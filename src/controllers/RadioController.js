@@ -38,6 +38,15 @@ export const RadioController = {
               album: this.meta.album,
               artwork: [{ src: this.meta.image, sizes: "256x256", type: "image/png" }],
             });
+
+            navigator.mediaSession.setActionHandler("play", () => {
+              this.audio.play();
+              this.apply();
+            });
+            navigator.mediaSession.setActionHandler("pause", () => {
+              this.audio.pause();
+              this.apply();
+            });
           }
         }
       } catch (error) {
