@@ -30,6 +30,15 @@ export const RadioController = {
         if (this.meta.image !== caratula) {
           this.meta.image = caratula;
           this.apply();
+
+          if ("mediaSession" in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+              title: this.meta.title,
+              artist: this.meta.artist,
+              album: this.meta.album,
+              artwork: [{ src: this.meta.image, sizes: "256x256", type: "image/png" }],
+            });
+          }
         }
       } catch (error) {
         console.error("Error al obtener metadata:", error);
