@@ -25,9 +25,17 @@ html {
   width: 100dvw;
   height: 100dvh;
   object-fit: cover;
+
+  /* Máscara para el degradado */
+  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+
+  /* Asegura la compatibilidad para bordes suaves */
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
 }
 
-.radio.playing {
+.radio.playing img {
   animation: heartBeat 0.5s infinite;
 }
 
